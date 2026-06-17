@@ -1,28 +1,33 @@
-# My Recipe Library
+# My Recipe Cards App
 
-A simple mobile-friendly recipe web app for GitHub Pages.
+This is a GitHub Pages recipe app that displays your JPEG recipe cards.
 
-## How to host on GitHub Pages
+## What is included
 
-1. Create a new GitHub repository, for example `recipe-library`.
-2. Upload all files and folders from this project into the repository.
-3. Go to **Settings** > **Pages**.
-4. Under **Build and deployment**, choose:
-   - Source: **Deploy from a branch**
-   - Branch: **main**
-   - Folder: **/root**
-5. Click **Save**.
-6. GitHub will give you a live website link after it publishes.
+- `index.html`
+- `style.css`
+- `script.js`
+- `manifest.webmanifest`
+- `service-worker.js`
+- `assets/` folder containing your recipe card JPEGs
+
+## Upload to GitHub
+
+1. Unzip this folder.
+2. Create a new public GitHub repository.
+3. Upload everything inside this folder, including the `assets` folder.
+4. Go to Settings > Pages.
+5. Set Source to `Deploy from a branch`.
+6. Choose branch `main` and folder `/root`.
+7. Save.
+
+Your app link will look like:
+
+`https://yourusername.github.io/your-repo-name/`
 
 ## Add to your phone
 
-Open the live website on your phone:
+Open the GitHub Pages link on your phone.
 
-- iPhone: Safari > Share > Add to Home Screen
-- Android: Chrome > three dots > Add to Home screen / Install app
-
-## Add more recipes
-
-1. Add the new image to `assets/images`.
-2. Open `script.js`.
-3. Add a new recipe line to the `recipes` list using the same format.
+- iPhone: Share > Add to Home Screen
+- Android: Menu > Add to Home screen

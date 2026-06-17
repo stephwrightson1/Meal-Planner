@@ -1,111 +1,188 @@
 const recipes = [
-  { title: "Biscoff Overnight Oats", category: "Breakfast", image: "assets/images/B01 - Biscoff Overnight Oats .jpeg" },
-  { title: "Nut Granola", category: "Breakfast", image: "assets/images/B02 - Nut Ganola .jpeg" },
-  { title: "Biscoff Pancake Bowl", category: "Breakfast", image: "assets/images/B03 - Biscoff Pancake Bowl.jpeg" },
-  { title: "Raspberry Choc Pancake Bowl", category: "Breakfast", image: "assets/images/B04 - Raspberry Choc Pancake Bowl.jpeg" },
-  { title: "Peach Cobbler Pancake Bowl", category: "Breakfast", image: "assets/images/B05 - Peach Cobbler Pancake Bowl.jpeg" },
-  { title: "Sweetcorn Chicken Salad", category: "Lunch", image: "assets/images/L01 - Sweetcorn Chicken Salad.jpeg" },
-  { title: "Taco Bowl", category: "Lunch", image: "assets/images/L02 - Taco Bowl.jpeg" },
-  { title: "Salmon Pasta Bake", category: "Dinner", image: "assets/images/D01 - Salmon Pasta Bake.jpeg" },
-  { title: "Chicken Tikka Rice Bake", category: "Dinner", image: "assets/images/D02 Chicken Tikka Rice Bake .jpeg" },
-  { title: "Pesto Chicken Bake", category: "Dinner", image: "assets/images/D03 - Pesto Chicken Bake.jpeg" },
-  { title: "Peanut Butter Energy Bar", category: "Snacks", image: "assets/images/S01 - Peanut butter Energy Bar.jpeg" },
-  { title: "Biscoff Bark", category: "Snacks", image: "assets/images/S02 -Biscoff Bark.jpeg" },
-  { title: "Lemon Curd Muffins", category: "Cakes", image: "assets/images/C01 - Lemon Curd Muffins.jpeg" },
-  { title: "New York Choc Chip Cookies", category: "Cakes", image: "assets/images/C02 - New York Choc Chip Cookies.jpeg" },
-  { title: "Cheesy Sloppy Joe", category: "Fakeaway", image: "assets/images/F01 - Cheesy Sloppy Joe.jpeg" }
+  {
+    "code": "B01",
+    "title": "Biscoff Overnight Oats",
+    "category": "Breakfast",
+    "image": "assets/b01-biscoff-overnight-oats.jpeg"
+  },
+  {
+    "code": "B02",
+    "title": "Nut Granola",
+    "category": "Breakfast",
+    "image": "assets/b02-nut-granola.jpeg"
+  },
+  {
+    "code": "B03",
+    "title": "Biscoff Pancake Bowl",
+    "category": "Breakfast",
+    "image": "assets/b03-biscoff-pancake-bowl.jpeg"
+  },
+  {
+    "code": "B04",
+    "title": "Raspberry Choc Pancake Bowl",
+    "category": "Breakfast",
+    "image": "assets/b04-raspberry-choc-pancake-bowl.jpeg"
+  },
+  {
+    "code": "B05",
+    "title": "Peach Cobbler Pancake Bowl",
+    "category": "Breakfast",
+    "image": "assets/b05-peach-cobbler-pancake-bowl.jpeg"
+  },
+  {
+    "code": "L01",
+    "title": "Sweetcorn Chicken Salad",
+    "category": "Lunch",
+    "image": "assets/l01-sweetcorn-chicken-salad.jpeg"
+  },
+  {
+    "code": "L02",
+    "title": "Taco Bowl",
+    "category": "Lunch",
+    "image": "assets/l02-taco-bowl.jpeg"
+  },
+  {
+    "code": "D01",
+    "title": "Salmon Pasta Bake",
+    "category": "Dinner",
+    "image": "assets/d01-salmon-pasta-bake.jpeg"
+  },
+  {
+    "code": "D02",
+    "title": "Chicken Tikka Rice Bake",
+    "category": "Dinner",
+    "image": "assets/d02-chicken-tikka-rice-bake.jpeg"
+  },
+  {
+    "code": "D03",
+    "title": "Pesto Chicken Bake",
+    "category": "Dinner",
+    "image": "assets/d03-pesto-chicken-bake.jpeg"
+  },
+  {
+    "code": "F01",
+    "title": "Cheesy Sloppy Joe",
+    "category": "Fakeaway",
+    "image": "assets/f01-cheesy-sloppy-joe.jpeg"
+  },
+  {
+    "code": "S01",
+    "title": "Peanut Butter Energy Bar",
+    "category": "Snacks",
+    "image": "assets/s01-peanut-butter-energy-bar.jpeg"
+  },
+  {
+    "code": "S02",
+    "title": "Biscoff Bark",
+    "category": "Snacks",
+    "image": "assets/s02-biscoff-bark.jpeg"
+  },
+  {
+    "code": "C01",
+    "title": "Lemon Curd Muffins",
+    "category": "Sweet Treats",
+    "image": "assets/c01-lemon-curd-muffins.jpeg"
+  },
+  {
+    "code": "C02",
+    "title": "New York Choc Chip Cookies",
+    "category": "Sweet Treats",
+    "image": "assets/c02-new-york-choc-chip-cookies.jpeg"
+  }
 ];
 
-const categories = ["All", ...new Set(recipes.map(recipe => recipe.category))];
+const grid = document.getElementById("recipeGrid");
+const searchInput = document.getElementById("searchInput");
+const filters = document.getElementById("categoryFilters");
+const dialog = document.getElementById("recipeDialog");
+const closeDialog = document.getElementById("closeDialog");
+const dialogTitle = document.getElementById("dialogTitle");
+const dialogCategory = document.getElementById("dialogCategory");
+const dialogImage = document.getElementById("dialogImage");
+
 let activeCategory = "All";
-let searchTerm = "";
-let deferredInstallPrompt;
 
-const grid = document.querySelector("#recipeGrid");
-const count = document.querySelector("#recipeCount");
-const chips = document.querySelector("#categoryChips");
-const searchInput = document.querySelector("#searchInput");
-const dialog = document.querySelector("#recipeDialog");
-const dialogImage = document.querySelector("#dialogImage");
-const dialogTitle = document.querySelector("#dialogTitle");
-const dialogCategory = document.querySelector("#dialogCategory");
-const closeDialog = document.querySelector("#closeDialog");
-const installButton = document.querySelector("#installButton");
+const categories = ["All", ...new Set(recipes.map(recipe => recipe.category))];
 
-function renderChips() {
-  chips.innerHTML = categories.map(category => `
-    <button class="chip ${category === activeCategory ? "active" : ""}" data-category="${category}">${category}</button>
-  `).join("");
-}
+function renderFilters() {
+  filters.innerHTML = "";
 
-function getFilteredRecipes() {
-  return recipes.filter(recipe => {
-    const matchesCategory = activeCategory === "All" || recipe.category === activeCategory;
-    const haystack = `${recipe.title} ${recipe.category}`.toLowerCase();
-    return matchesCategory && haystack.includes(searchTerm.toLowerCase());
+  categories.forEach(category => {
+    const button = document.createElement("button");
+    button.className = "chip" + (category === activeCategory ? " active" : "");
+    button.textContent = category;
+
+    button.addEventListener("click", () => {
+      activeCategory = category;
+      renderFilters();
+      renderRecipes();
+    });
+
+    filters.appendChild(button);
   });
 }
 
 function renderRecipes() {
-  const filtered = getFilteredRecipes();
-  count.textContent = `${filtered.length} recipe${filtered.length === 1 ? "" : "s"}`;
-  grid.innerHTML = filtered.map((recipe, index) => `
-    <button class="recipe-card" data-index="${recipes.indexOf(recipe)}">
-      <img src="${recipe.image}" alt="${recipe.title} recipe card" loading="lazy" />
-      <div class="recipe-card-content">
-        <h2>${recipe.title}</h2>
-        <span class="recipe-category">${recipe.category}</span>
+  const search = searchInput.value.trim().toLowerCase();
+
+  const filtered = recipes.filter(recipe => {
+    const matchesCategory = activeCategory === "All" || recipe.category === activeCategory;
+    const searchText = `${recipe.code} ${recipe.title} ${recipe.category}`.toLowerCase();
+    const matchesSearch = searchText.includes(search);
+    return matchesCategory && matchesSearch;
+  });
+
+  grid.innerHTML = "";
+
+  if (!filtered.length) {
+    grid.innerHTML = "<p>No recipes found.</p>";
+    return;
+  }
+
+  filtered.forEach(recipe => {
+    const card = document.createElement("button");
+    card.className = "recipe";
+
+    card.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.title} recipe card" loading="lazy">
+      <div>
+        <h3>${recipe.code} · ${recipe.title}</h3>
+        <p>${recipe.category}</p>
       </div>
-    </button>
-  `).join("") || `<p>No recipes found. Try another search.</p>`;
+    `;
+
+    card.addEventListener("click", () => openRecipe(recipe));
+    grid.appendChild(card);
+  });
 }
 
-chips.addEventListener("click", event => {
-  const button = event.target.closest("button[data-category]");
-  if (!button) return;
-  activeCategory = button.dataset.category;
-  renderChips();
-  renderRecipes();
-});
-
-searchInput.addEventListener("input", event => {
-  searchTerm = event.target.value;
-  renderRecipes();
-});
-
-grid.addEventListener("click", event => {
-  const card = event.target.closest(".recipe-card");
-  if (!card) return;
-  const recipe = recipes[Number(card.dataset.index)];
+function openRecipe(recipe) {
+  dialogTitle.textContent = `${recipe.code} · ${recipe.title}`;
+  dialogCategory.textContent = recipe.category;
   dialogImage.src = recipe.image;
   dialogImage.alt = `${recipe.title} recipe card`;
-  dialogTitle.textContent = recipe.title;
-  dialogCategory.textContent = recipe.category;
   dialog.showModal();
-});
-
-closeDialog.addEventListener("click", () => dialog.close());
-dialog.addEventListener("click", event => {
-  if (event.target === dialog) dialog.close();
-});
-
-window.addEventListener("beforeinstallprompt", event => {
-  event.preventDefault();
-  deferredInstallPrompt = event;
-  installButton.hidden = false;
-});
-
-installButton.addEventListener("click", async () => {
-  if (!deferredInstallPrompt) return;
-  deferredInstallPrompt.prompt();
-  await deferredInstallPrompt.userChoice;
-  deferredInstallPrompt = null;
-  installButton.hidden = true;
-});
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("service-worker.js"));
 }
 
-renderChips();
+closeDialog.addEventListener("click", () => dialog.close());
+
+dialog.addEventListener("click", event => {
+  const rect = dialog.getBoundingClientRect();
+
+  const clickedOutside =
+    event.clientX < rect.left ||
+    event.clientX > rect.right ||
+    event.clientY < rect.top ||
+    event.clientY > rect.bottom;
+
+  if (clickedOutside) dialog.close();
+});
+
+searchInput.addEventListener("input", renderRecipes);
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js").catch(() => {});
+}
+
+renderFilters();
 renderRecipes();
