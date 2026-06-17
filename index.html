@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#d8c7e8" />
+  <title>My Recipe Library</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">My phone recipe app</p>
+      <h1>Recipe Library</h1>
+      <p class="subtitle">Search, filter and save your favourite meals, snacks and bakes.</p>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="controls" aria-label="Recipe controls">
+      <label class="search-label" for="searchInput">Search recipes</label>
+      <input id="searchInput" type="search" placeholder="Search by name or category..." autocomplete="off" />
+      <div class="chips" id="categoryChips" aria-label="Recipe categories"></div>
+    </section>
+
+    <section class="summary-bar" aria-live="polite">
+      <span id="recipeCount"></span>
+      <button id="installButton" class="install-button" hidden>Install app</button>
+    </section>
+
+    <section id="recipeGrid" class="recipe-grid" aria-label="Recipes"></section>
+  </main>
+
+  <dialog id="recipeDialog" class="recipe-dialog">
+    <button class="close-button" id="closeDialog" aria-label="Close recipe">×</button>
+    <img id="dialogImage" alt="" />
+    <div class="dialog-content">
+      <p id="dialogCategory" class="dialog-category"></p>
+      <h2 id="dialogTitle"></h2>
+      <p class="dialog-note">Open this recipe card on your phone, screenshot it, or replace this area later with full ingredients and method text.</p>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
