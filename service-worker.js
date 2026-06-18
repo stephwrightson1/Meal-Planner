@@ -1,0 +1,1 @@
+const CACHE_NAME="the-recipe-vault-v4";const CORE_ASSETS=["./","index.html","style.css","script.js","manifest.webmanifest"];self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(CORE_ASSETS)))});self.addEventListener("fetch",e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))})
