@@ -3,7 +3,7 @@
   "short_name": "Recipe Vault",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#fffaf2",
-  "theme_color": "#f6c7bd",
+  "background_color": "#fff7ed",
+  "theme_color": "#fff7ed",
   "icons": []
 }

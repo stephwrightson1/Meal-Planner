@@ -1,148 +1,171 @@
-const recipes=[
+const recipes = [
   {
     "code": "B01",
     "title": "Biscoff Overnight Oats",
     "category": "Breakfast",
-    "icon": "🍳",
+    "icon": "\ud83c\udf73",
     "image": "assets/b01-biscoff-overnight-oats.jpeg"
   },
   {
     "code": "B02",
     "title": "Nut Granola",
     "category": "Breakfast",
-    "icon": "🍳",
+    "icon": "\ud83c\udf73",
     "image": "assets/b02-nut-granola.jpeg"
   },
   {
     "code": "B03",
     "title": "Biscoff Pancake Bowl",
     "category": "Breakfast",
-    "icon": "🍳",
+    "icon": "\ud83c\udf73",
     "image": "assets/b03-biscoff-pancake-bowl.jpeg"
   },
   {
     "code": "B04",
     "title": "Raspberry Chocolate Pancake Bowl",
     "category": "Breakfast",
-    "icon": "🍳",
+    "icon": "\ud83c\udf73",
     "image": "assets/b04-raspberry-chocolate-pancake-bowl.jpeg"
   },
   {
     "code": "B05",
     "title": "Peach Cobbler Pancake Bowl",
     "category": "Breakfast",
-    "icon": "🍳",
+    "icon": "\ud83c\udf73",
     "image": "assets/b05-peach-cobbler-pancake-bowl.jpeg"
   },
   {
     "code": "L01",
     "title": "Sweetcorn Chicken Salad",
     "category": "Lunch",
-    "icon": "🥗",
+    "icon": "\ud83e\udd57",
     "image": "assets/l01-sweetcorn-chicken-salad.jpeg"
   },
   {
     "code": "L02",
     "title": "Taco Bowl",
     "category": "Lunch",
-    "icon": "🥗",
+    "icon": "\ud83e\udd57",
     "image": "assets/l02-taco-bowl.jpeg"
   },
   {
     "code": "L03",
     "title": "Chicken Fajita Bowl",
     "category": "Lunch",
-    "icon": "🥗",
+    "icon": "\ud83e\udd57",
     "image": "assets/l03-chicken-fajita-bowl.jpeg"
   },
   {
     "code": "D01",
     "title": "Salmon Pasta Bake",
     "category": "Dinner",
-    "icon": "🍝",
+    "icon": "\ud83c\udf72",
     "image": "assets/d01-salmon-pasta-bake.jpeg"
   },
   {
     "code": "D02",
     "title": "Chicken Tikka Rice Bake",
     "category": "Dinner",
-    "icon": "🍝",
+    "icon": "\ud83c\udf72",
     "image": "assets/d02-chicken-tikka-rice-bake.jpeg"
   },
   {
     "code": "D03",
     "title": "Pesto Chicken Bake",
     "category": "Dinner",
-    "icon": "🍝",
+    "icon": "\ud83c\udf72",
     "image": "assets/d03-pesto-chicken-bake.jpeg"
   },
   {
     "code": "D04",
     "title": "Chicken Enchiladas",
     "category": "Dinner",
-    "icon": "🍝",
+    "icon": "\ud83c\udf72",
     "image": "assets/d04-chicken-enchiladas.jpeg"
   },
   {
     "code": "F01",
     "title": "Cheesy Sloppy Joe Garlic Bread",
     "category": "Fakeaway",
-    "icon": "🍔",
+    "icon": "\ud83c\udf54",
     "image": "assets/f01-cheesy-sloppy-joe-garlic-bread.jpeg"
   },
   {
     "code": "S01",
     "title": "Peanut Butter Energy Bar",
     "category": "Snacks",
-    "icon": "🍫",
+    "icon": "\ud83e\udd5c",
     "image": "assets/s01-peanut-butter-energy-bar.jpeg"
   },
   {
     "code": "S02",
     "title": "Biscoff Bark",
     "category": "Snacks",
-    "icon": "🍫",
+    "icon": "\ud83e\udd5c",
     "image": "assets/s02-biscoff-bark.jpeg"
   },
   {
     "code": "C01",
     "title": "Lemon Curd Muffins",
     "category": "Sweet Treats",
-    "icon": "🧁",
+    "icon": "\ud83e\uddc1",
     "image": "assets/c01-lemon-curd-muffins.jpeg"
   },
   {
     "code": "C02",
     "title": "New York Chocolate Chip Cookies",
     "category": "Sweet Treats",
-    "icon": "🧁",
+    "icon": "\ud83e\uddc1",
     "image": "assets/c02-new-york-chocolate-chip-cookies.jpeg"
   }
 ];
-const categoryMeta={
+const categoryMeta = {
   "Breakfast": {
-    "icon": "🍳",
-    "class": "breakfast"
+    "icon": "\ud83c\udf73",
+    "className": "breakfast"
   },
   "Lunch": {
-    "icon": "🥗",
-    "class": "lunch"
+    "icon": "\ud83e\udd57",
+    "className": "lunch"
   },
   "Dinner": {
-    "icon": "🍝",
-    "class": "dinner"
+    "icon": "\ud83c\udf72",
+    "className": "dinner"
   },
   "Fakeaway": {
-    "icon": "🍔",
-    "class": "fakeaway"
+    "icon": "\ud83c\udf54",
+    "className": "fakeaway"
   },
   "Snacks": {
-    "icon": "🍫",
-    "class": "snacks"
+    "icon": "\ud83e\udd5c",
+    "className": "snacks"
   },
   "Sweet Treats": {
-    "icon": "🧁",
-    "class": "sweets"
+    "icon": "\ud83e\uddc1",
+    "className": "sweets"
   }
 };
-const views={home:document.getElementById("homeView"),category:document.getElementById("categoryView"),favourites:document.getElementById("favouritesView"),recent:document.getElementById("recentView"),about:document.getElementById("aboutView")};const categoryTiles=document.getElementById("categoryTiles"),recipeCount=document.getElementById("recipeCount"),homeFavourites=document.getElementById("homeFavourites"),homeFavouritesSection=document.getElementById("homeFavouritesSection"),categoryIcon=document.getElementById("categoryIcon"),categoryTitle=document.getElementById("categoryTitle"),categorySubtitle=document.getElementById("categorySubtitle"),categoryRecipes=document.getElementById("categoryRecipes"),favouriteRecipes=document.getElementById("favouriteRecipes"),recentRecipes=document.getElementById("recentRecipes"),searchInput=document.getElementById("searchInput"),dialog=document.getElementById("recipeDialog"),closeDialog=document.getElementById("closeDialog"),dialogFavourite=document.getElementById("dialogFavourite"),dialogCode=document.getElementById("dialogCode"),dialogTitle=document.getElementById("dialogTitle"),dialogCategory=document.getElementById("dialogCategory"),dialogImage=document.getElementById("dialogImage"),topHeartButton=document.getElementById("topHeartButton"),menuButton=document.getElementById("menuButton");let currentRecipe=null;const store={get favourites(){return JSON.parse(localStorage.getItem("recipeVaultFavourites")||"[]")},set favourites(v){localStorage.setItem("recipeVaultFavourites",JSON.stringify(v))},get recent(){return JSON.parse(localStorage.getItem("recipeVaultRecent")||"[]")},set recent(v){localStorage.setItem("recipeVaultRecent",JSON.stringify(v))}};function recipeByCode(c){return recipes.find(r=>r.code===c)}function categoryNames(){return[...new Set(recipes.map(r=>r.category))]}function countForCategory(c){return recipes.filter(r=>r.category===c).length}function plural(c,w){return `${c} ${w}${c===1?"":"s"}`}function showView(n){Object.entries(views).forEach(([k,v])=>v.classList.toggle("active",k===n));document.querySelectorAll(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.nav===n||(n==="category"&&b.dataset.nav==="categories")));window.scrollTo({top:0,behavior:"smooth"})}function renderHome(){recipeCount.textContent=plural(recipes.length,"recipe");renderCategories();renderHomeFavourites()}function renderCategories(){categoryTiles.innerHTML="";categoryNames().forEach(c=>{const m=categoryMeta[c]||{icon:"📖",class:"breakfast"},count=countForCategory(c),b=document.createElement("button");b.className=`category-tile ${m.class}`;b.innerHTML=`<span class="emoji">${m.icon}</span><span><h3>${c}</h3><p>${plural(count,"recipe")}</p></span><span class="chevron">›</span>`;b.addEventListener("click",()=>openCategory(c));categoryTiles.appendChild(b)})}function openCategory(c){const m=categoryMeta[c]||{icon:"📖"},list=recipes.filter(r=>r.category===c);categoryIcon.textContent=m.icon;categoryTitle.textContent=c;categorySubtitle.textContent=plural(list.length,"recipe");renderRecipeList(categoryRecipes,list);showView("category")}function renderRecipeList(container,list){container.innerHTML="";if(!list.length){container.innerHTML=`<div class="empty-state">No recipes here yet.</div>`;return}list.forEach(r=>{const b=document.createElement("button");b.className="recipe-row";b.innerHTML=`<img src="${r.image}" alt="${r.title} recipe card preview" loading="lazy"><span><p class="code">${r.code}</p><h3>${r.title}</h3><p class="meta">${r.category}</p></span><span class="arrow">›</span>`;b.addEventListener("click",()=>openRecipe(r));container.appendChild(b)})}function renderHomeFavourites(){const favs=store.favourites.map(recipeByCode).filter(Boolean).slice(0,3);if(!favs.length){homeFavouritesSection.style.display="none";return}homeFavouritesSection.style.display="block";homeFavourites.innerHTML="";favs.forEach(r=>{const b=document.createElement("button");b.className="mini-card";b.innerHTML=`<img src="${r.image}" alt="${r.title} recipe card preview" loading="lazy"><p>${r.title}</p>`;b.addEventListener("click",()=>openRecipe(r));homeFavourites.appendChild(b)})}function renderFavourites(){const favs=store.favourites.map(recipeByCode).filter(Boolean);favouriteRecipes.innerHTML="";if(!favs.length){favouriteRecipes.innerHTML=`<div class="empty-state">Tap the heart on a recipe to save it here.</div>`;return}renderRecipeList(favouriteRecipes,favs)}function renderRecent(){const rec=store.recent.map(recipeByCode).filter(Boolean);recentRecipes.innerHTML="";if(!rec.length){recentRecipes.innerHTML=`<div class="empty-state">Recently viewed recipes will appear here.</div>`;return}renderRecipeList(recentRecipes,rec)}function openRecipe(r){currentRecipe=r;dialogCode.textContent=r.code;dialogTitle.textContent=r.title;dialogCategory.textContent=`• ${r.category} •`;dialogImage.src=r.image;dialogImage.alt=`${r.title} recipe card`;addRecent(r.code);updateFavouriteButton();dialog.showModal()}function addRecent(c){store.recent=[c,...store.recent.filter(i=>i!==c)].slice(0,10);renderRecent()}function isFavourite(c){return store.favourites.includes(c)}function toggleFavourite(c){if(!c)return;if(isFavourite(c))store.favourites=store.favourites.filter(i=>i!==c);else store.favourites=[c,...store.favourites];updateFavouriteButton();renderHomeFavourites();renderFavourites()}function updateFavouriteButton(){if(!currentRecipe)return;const saved=isFavourite(currentRecipe.code);dialogFavourite.textContent=saved?"♥":"♡";dialogFavourite.classList.toggle("saved",saved)}function searchRecipes(q){const clean=q.trim().toLowerCase();if(!clean){renderCategories();return}categoryTiles.innerHTML="";const matches=recipes.filter(r=>`${r.code} ${r.title} ${r.category}`.toLowerCase().includes(clean));if(!matches.length){categoryTiles.innerHTML=`<div class="empty-state">No recipes found.</div>`;return}matches.forEach(r=>{const m=categoryMeta[r.category]||{class:"breakfast"},b=document.createElement("button");b.className=`category-tile ${m.class}`;b.innerHTML=`<span class="emoji">${r.icon}</span><span><h3>${r.title}</h3><p>${r.code} · ${r.category}</p></span><span class="chevron">›</span>`;b.addEventListener("click",()=>openRecipe(r));categoryTiles.appendChild(b)})}document.querySelectorAll("[data-nav]").forEach(b=>b.addEventListener("click",()=>{const t=b.dataset.nav;if(t==="home")showView("home");if(t==="categories"){showView("home");document.querySelector(".category-list")?.scrollIntoView({behavior:"smooth",block:"start"})}if(t==="favourites"){renderFavourites();showView("favourites")}if(t==="recent"){renderRecent();showView("recent")}}));topHeartButton.addEventListener("click",()=>{renderFavourites();showView("favourites")});menuButton.addEventListener("click",()=>showView("about"));closeDialog.addEventListener("click",()=>dialog.close());dialogFavourite.addEventListener("click",()=>toggleFavourite(currentRecipe?.code));searchInput.addEventListener("input",e=>searchRecipes(e.target.value));if("serviceWorker" in navigator){navigator.serviceWorker.register("service-worker.js").catch(()=>{})}renderHome();renderFavourites();renderRecent();showView("home");
+
+const screens={home:document.getElementById("home"),categoryScreen:document.getElementById("categoryScreen"),favouritesScreen:document.getElementById("favouritesScreen"),recentScreen:document.getElementById("recentScreen"),aboutScreen:document.getElementById("aboutScreen")};
+const categoriesEl=document.getElementById("categories"),categoryName=document.getElementById("categoryName"),categoryBubble=document.getElementById("categoryBubble"),categoryCount=document.getElementById("categoryCount"),recipeList=document.getElementById("recipeList"),homeFavourites=document.getElementById("homeFavourites"),homeRecent=document.getElementById("homeRecent"),homeFavWrap=document.getElementById("homeFavWrap"),homeRecentWrap=document.getElementById("homeRecentWrap"),favouritesList=document.getElementById("favouritesList"),recentList=document.getElementById("recentList"),recipeModal=document.getElementById("recipeModal"),closeRecipe=document.getElementById("closeRecipe"),modalHeart=document.getElementById("modalHeart"),modalCode=document.getElementById("modalCode"),modalTitle=document.getElementById("modalTitle"),modalCategory=document.getElementById("modalCategory"),modalImage=document.getElementById("modalImage");
+let currentRecipe=null;
+const store={get favourites(){return JSON.parse(localStorage.getItem("vaultFavourites")||"[]")},set favourites(v){localStorage.setItem("vaultFavourites",JSON.stringify(v))},get recent(){return JSON.parse(localStorage.getItem("vaultRecent")||"[]")},set recent(v){localStorage.setItem("vaultRecent",JSON.stringify(v))}};
+const plural=(c,w)=>`${c} ${w}${c===1?"":"s"}`;
+const recipeByCode=code=>recipes.find(r=>r.code===code);
+const categories=()=>[...new Set(recipes.map(r=>r.category))];
+function showScreen(id){Object.entries(screens).forEach(([k,s])=>s.classList.toggle("active",k===id));document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active",n.dataset.view===id||(id==="categoryScreen"&&n.id==="navCategories")));window.scrollTo(0,0)}
+function renderCategories(){categoriesEl.innerHTML="";categories().forEach(cat=>{const count=recipes.filter(r=>r.category===cat).length,meta=categoryMeta[cat],b=document.createElement("button");b.className=`category-card ${meta.className}`;b.innerHTML=`<span class="cat-icon">${meta.icon}</span><span><h3>${cat}</h3><p>${plural(count,"recipe")}</p></span><span class="arrow">›</span>`;b.onclick=()=>openCategory(cat);categoriesEl.appendChild(b)})}
+function openCategory(cat){const meta=categoryMeta[cat],list=recipes.filter(r=>r.category===cat);categoryName.textContent=cat;categoryBubble.textContent=meta.icon;categoryCount.textContent=plural(list.length,"recipe").toUpperCase();renderRecipeList(recipeList,list);showScreen("categoryScreen")}
+function renderRecipeList(container,list){container.innerHTML="";if(!list.length){container.innerHTML=`<div class="empty">Nothing saved here yet.</div>`;return}list.forEach(r=>{const b=document.createElement("button");b.className="recipe-row";b.innerHTML=`<img src="${r.image}" alt="${r.title} preview" loading="lazy"><span><p class="code">${r.code}</p><h3>${r.title}</h3><p class="meta">${r.category}</p></span><span class="arrow">›</span>`;b.onclick=()=>openRecipe(r);container.appendChild(b)})}
+const isFavourite=code=>store.favourites.includes(code);
+function toggleFavourite(code){if(!code)return;store.favourites=isFavourite(code)?store.favourites.filter(x=>x!==code):[code,...store.favourites];updateHeart();renderFavourites();renderHomeShelves()}
+function addRecent(code){store.recent=[code,...store.recent.filter(x=>x!==code)].slice(0,10);renderRecent();renderHomeShelves()}
+function updateHeart(){if(!currentRecipe)return;const saved=isFavourite(currentRecipe.code);modalHeart.textContent=saved?"♥":"♡";modalHeart.classList.toggle("saved",saved)}
+function openRecipe(r){currentRecipe=r;modalCode.textContent=r.code;modalTitle.textContent=r.title;modalCategory.textContent=`• ${r.category} •`;modalImage.src=r.image;modalImage.alt=`${r.title} recipe card`;updateHeart();addRecent(r.code);recipeModal.showModal()}
+function renderFavourites(){renderRecipeList(favouritesList,store.favourites.map(recipeByCode).filter(Boolean))}
+function renderRecent(){renderRecipeList(recentList,store.recent.map(recipeByCode).filter(Boolean))}
+function renderHomeShelves(){const favs=store.favourites.map(recipeByCode).filter(Boolean).slice(0,3),recent=store.recent.map(recipeByCode).filter(Boolean).slice(0,5);homeFavWrap.style.display=favs.length?"block":"none";homeRecentWrap.style.display=recent.length?"block":"none";homeFavourites.innerHTML=favs.map(r=>`<button class="thumb-card" data-code="${r.code}"><img src="${r.image}" alt="${r.title}"><p>${r.title}</p></button>`).join("");homeRecent.innerHTML=recent.map(r=>`<button class="circle-card" data-code="${r.code}"><img src="${r.image}" alt="${r.title}"><p>${r.code}</p></button>`).join("");document.querySelectorAll("[data-code]").forEach(b=>b.onclick=()=>openRecipe(recipeByCode(b.dataset.code)))}
+document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>showScreen(b.dataset.view));
+document.getElementById("navCategories").onclick=()=>showScreen("home");document.getElementById("aboutBtn").onclick=()=>showScreen("aboutScreen");document.getElementById("topFavBtn").onclick=()=>{renderFavourites();showScreen("favouritesScreen")};closeRecipe.onclick=()=>recipeModal.close();modalHeart.onclick=()=>toggleFavourite(currentRecipe?.code);
+if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js").catch(()=>{});
+renderCategories();renderFavourites();renderRecent();renderHomeShelves();showScreen("home");
